@@ -30,9 +30,9 @@ def insert_Product(connection,products):
     connection.close()
     return cur.lastrowid
 def delete_Products(connection,product_id):
-    cur = connection.cursor()
+    cnx = connection.cursor()
     query = "DELETE from products where product_id = " + str(product_id)
-    cur.execute(query)
+    cnx.execute(query)
     connection.commit()
     connection.close()
 
