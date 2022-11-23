@@ -19,16 +19,16 @@ def get_All_Products(connection):
     return response
 
 def insert_Product(connection,products):
-    cnx = connection.cursor()
+    cur = connection.cursor()
     add_products = ("INSERT INTO products "
                "( Name, uom_id, price_per_unit) "
                "VALUES ( %s, %s, %s)")
     data = (products['Name'],products['uom_id'],products['price_per_unit'])
 
-    cnx.execute(add_products,data)
+    cur.execute(add_products,data)
     connection.commit()
     connection.close()
-    return cnx.lastrowid
+    return cur.lastrowid
 def delete_Products(connection,product_id):
     cnx = connection.cursor()
     query = "DELETE from products where product_id = " + str(product_id)
